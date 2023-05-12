@@ -1,0 +1,33 @@
+:root {
+    /* breakpoints */
+    --mobile-bp: 375px;
+    --desktop-bp: 375px;
+
+    /* background colors */
+    --red-bg: linear-gradient(90deg, rgba(255, 143, 112, 1) 0%, rgba(255, 61, 84, 1) 100%);
+    --blue-bg: linear-gradient(90deg, rgba(44, 45, 63, 1) 0%, rgba(63, 65, 100, 1) 100%);
+    --dark-blue-bg: #25252d;
+    /* colors */
+
+    /* (CTA text) */
+    --light-red: #ff525d;
+
+    /* (CTA hover background) */
+    --very-light-red: #ff7a85;
+
+    /* headings */
+    --very-dark-blue: #1f3f5b;
+
+    /* main text */
+    --white: #ffffff;
+
+    /* footer text */
+    --grayish-blue: #c8c8cb;
+
+    /* body */
+    --dark-blue: hsl(207, 13%, 34%);
+
+    /* fonts */
+    --ubuntu: 'Ubuntu', sans-serif;
+    --overpass: 'Overpass', sans-serif;
+}
