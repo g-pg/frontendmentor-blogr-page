@@ -35,9 +35,22 @@ export default {
 			(this.showDropdown = true), (this.selectedMenu = menu);
 		},
 		closeDropdown(event) {
-			if (!this.$refs.navItem.contains(event.target)) {
+			if (this.$refs.navItem && !this.$refs.navItem.contains(event.target)) {
 				this.showDropdown = false;
 				this.selectedMenu = "";
+			}
+		},
+		closeBurger(event) {
+			const navRef = this.$refs.navRef;
+			const burgerBtnRef = this.$refs.burgerBtnRef;
+
+			if (
+				navRef &&
+				burgerBtnRef &&
+				!navRef.contains(event.target) &&
+				!burgerBtnRef.contains(event.target)
+			) {
+				this.burgerOpen = false;
 			}
 		},
 		updateWindowWidth() {
@@ -47,10 +60,12 @@ export default {
 
 	mounted() {
 		document.addEventListener("click", this.closeDropdown);
+		document.addEventListener("click", this.closeBurger);
 		window.addEventListener("resize", this.updateWindowWidth);
 	},
 	beforeUnmount() {
 		document.removeEventListener("click", this.closeDropdown);
+		document.removeEventListener("click", this.closeBurger);
 		window.removeEventListener("resize", this.updateWindowWidth);
 	},
 	computed: {
@@ -64,6 +79,16 @@ export default {
 			return this.windowWidth <= 980;
 		},
 	},
+
+	watch: {
+		burgerOpen(isOpen) {
+			if (isOpen) {
+				document.body.style.overflow = "hidden";
+			} else {
+				document.body.style.overflow = "unset";
+			}
+		},
+	},
 };
 </script>
 
@@ -71,10 +96,10 @@ export default {
 	<nav>
 		<div class="container">
 			<img src="../assets/logo.svg" alt="Blogr logo" />
-			<button @click="toggleBurger" class="burger-btn">
+			<button @click="toggleBurger" class="burger-btn" ref="burgerBtnRef">
 				<img :src="burgerIconPath" alt="" />
 			</button>
-			<div v-if="!isMobile || burgerOpen" class="nav-wrapper">
+			<div v-if="!isMobile || burgerOpen" class="nav-wrapper" ref="navRef">
 				<ul :class="['main-nav-ul', isMobile ? 'mobile' : '']">
 					<li ref="navItem">
 						<a href="#" class="primary-link" @click="handleMenuClick('product')"
