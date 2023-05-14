@@ -1,7 +1,6 @@
 <script>
 import SvgComp from "./SvgComp.vue";
 import PrimaryBtn from "./PrimaryBtn.vue";
-
 export default {
 	components: {
 		SvgComp,
@@ -10,11 +9,16 @@ export default {
 
 	data() {
 		return {
+			burgerOpen: false,
 			showDropdown: false,
 			selectedMenu: "",
+			windowWidth: window.innerWidth,
 		};
 	},
 	methods: {
+		toggleBurger() {
+			this.burgerOpen = !this.burgerOpen;
+		},
 		addRotationClass(menu) {
 			if (this.showDropdown && this.selectedMenu === menu) {
 				return "rotated-arrow";
@@ -36,18 +40,34 @@ export default {
 				this.selectedMenu = "";
 			}
 		},
-	},
-
-	watch: {
-		selectedMenu(selected) {
-			console.log(selected);
+		updateWindowWidth() {
+			this.windowWidth = window.innerWidth;
 		},
 	},
+
+	// watch: {
+	// 	windowWidth(newWidth) {
+	// 		console.log("newidth", newWidth);
+	// 	},
+	// },
 	mounted() {
 		document.addEventListener("click", this.closeDropdown);
+		window.addEventListener("resize", this.updateWindowWidth);
 	},
 	beforeUnmount() {
 		document.removeEventListener("click", this.closeDropdown);
+		window.removeEventListener("resize", this.updateWindowWidth);
+	},
+	computed: {
+		burgerIconPath() {
+			return this.burgerOpen ? "/icon-close.svg" : "./icon-hamburger.svg";
+		},
+		arrowIcon() {
+			return this.isMobile ? "icon-arrow-dark" : "icon-arrow-light";
+		},
+		isMobile() {
+			return this.windowWidth > 980 ? false : true;
+		},
 	},
 };
 </script>
@@ -55,25 +75,28 @@ export default {
 <template>
 	<nav>
 		<div class="container">
-			<img src="../assets/logo.svg" alt="" />
-			<ul>
+			<img src="../assets/logo.svg" alt="Blogr logo" />
+			<button @click="toggleBurger" class="burger-btn">
+				<img :src="burgerIconPath" alt="" />
+			</button>
+			<ul
+				v-if="!isMobile || burgerOpen"
+				:class="['main-nav-ul', isMobile ? 'mobile' : '']"
+			>
 				<li ref="navItem">
 					<a href="#" class="primary-link" @click="handleMenuClick('product')"
 						>Product</a
-					><SvgComp name="icon-arrow-light" :class="addRotationClass('product')" />
+					><SvgComp :name="arrowIcon" :class="addRotationClass('product')" />
 				</li>
 				<li ref="navItem">
 					<a href="#" class="primary-link" @click="handleMenuClick('company')"
 						>Company</a
-					><SvgComp name="icon-arrow-light" :class="addRotationClass('company')" />
+					><SvgComp :name="arrowIcon" :class="addRotationClass('company')" />
 				</li>
 				<li ref="navItem">
 					<div class="link-arrow" @click="handleMenuClick('connect')">
 						<a href="#" class="primary-link">Connect</a
-						><SvgComp
-							name="icon-arrow-light"
-							:class="addRotationClass('connect')"
-						/>
+						><SvgComp :name="arrowIcon" :class="addRotationClass('connect')" />
 					</div>
 
 					<div
@@ -89,7 +112,7 @@ export default {
 					</div>
 				</li>
 			</ul>
-			<div class="auth-btns">
+			<div v-if="!isMobile || burgerOpen" class="auth-btns">
 				<a href="#" class="primary-link">Login</a>
 				<a href="#">
 					<PrimaryBtn content="Sign Up" hollow padding />
@@ -107,7 +130,7 @@ export default {
 	margin-top: 0.5rem;
 }
 
-.container ul {
+.main-nav-ul {
 	display: flex;
 	gap: 2rem;
 	align-items: center;
@@ -191,5 +214,67 @@ a {
 	display: flex;
 	align-items: center;
 	gap: 1.5rem;
+}
+
+.burger-btn {
+	display: none;
+}
+@media (max-width: 980px) {
+	.container {
+		position: relative;
+	}
+	.burger-btn {
+		display: unset;
+		margin-left: auto;
+		background: none;
+		border: none;
+		cursor: pointer;
+	}
+	.auth-btns {
+		display: none;
+	}
+	.main-nav-ul {
+		position: absolute;
+		z-index: 999;
+		width: 90%;
+		height: 80vh;
+		inset: 0;
+		margin: 0 auto;
+		transform: translateY(70px);
+		background: var(--white);
+		flex-direction: column;
+		align-items: center;
+		gap: 2.5rem;
+		padding: 2.5rem;
+		box-shadow: 0px 5px 15px 3px rgb(0, 0, 0, 0.2);
+		border-radius: 8px;
+	}
+
+	.primary-link {
+		color: var(--very-dark-blue);
+		font-size: 1.2rem;
+	}
+	.container li {
+		width: 100%;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.dropdown {
+		text-align: center;
+		background: #d0d0d3;
+		box-shadow: none;
+		width: 100%;
+		left: 0;
+		margin: 0 auto;
+		gap: 1.8rem;
+		/* animation: roll 0.3s ease-in forwards; */
+	}
+
+	.dropdown-link {
+		color: var(--very-dark-blue);
+		font-size: 1.1rem;
+	}
 }
 </style>
