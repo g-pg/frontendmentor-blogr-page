@@ -1,10 +1,10 @@
 :root {
-    /* breakpoints */
+    /* breaking points */
     --mobile-bp: 375px;
-    --desktop-bp: 375px;
+    --desktop-bp: 1280px;
 
     /* background colors */
-    --red-bg: linear-gradient(90deg, rgba(255, 143, 112, 1) 0%, rgba(255, 61, 84, 1) 100%);
+    --red-bg: linear-gradient(120deg, rgba(255, 143, 112, 1) 10%, rgba(255, 61, 84, 1) 100%);
     --blue-bg: linear-gradient(90deg, rgba(44, 45, 63, 1) 0%, rgba(63, 65, 100, 1) 100%);
     --dark-blue-bg: #25252d;
     /* colors */
@@ -20,7 +20,7 @@
 
     /* main text */
     --white: #ffffff;
-
+    --black: #000000;
     /* footer text */
     --grayish-blue: #c8c8cb;
 
@@ -28,6 +28,29 @@
     --dark-blue: hsl(207, 13%, 34%);
 
     /* fonts */
+
+    /*400, 500, 700 */
     --ubuntu: 'Ubuntu', sans-serif;
+
+    /*300, 600 */
     --overpass: 'Overpass', sans-serif;
+
+}
+
+body {
+    font-family: var(--ubuntu);
+    overflow-x: hidden;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: var(--desktop-bg);
+    width: 80%
+}
+
+@media (max-width: 780px) {
+    .container {
+        width: 100%;
+        padding-inline: 1rem;
+    }
 }
