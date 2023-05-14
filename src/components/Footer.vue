@@ -95,4 +95,19 @@ footer {
 	flex-direction: column;
 	gap: 1rem;
 }
+
+@media (max-width: 980px) {
+	.footer-wrapper {
+		grid-template-columns: 1fr;
+		place-items: center;
+		gap: 3rem;
+	}
+
+	.column {
+		text-align: center;
+	}
+	.column ul {
+		margin-top: 1rem;
+	}
+}
 </style>
