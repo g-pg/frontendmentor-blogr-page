@@ -83,4 +83,15 @@ header {
 	gap: 1rem;
 	margin-top: 3rem;
 }
+
+@media (max-width: 980px) {
+	header {
+		height: 100vh;
+	}
+	.content {
+		/* height: 70vh; */
+		/* margin-top: 5rem; */
+		/* padding-bottom: 5rem; */
+	}
+}
 </style>
