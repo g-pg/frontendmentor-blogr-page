@@ -10,7 +10,10 @@ export default {
 			type: Boolean,
 			required: false,
 		},
-
+		red: {
+			type: String,
+			required: false,
+		},
 		padding: {
 			type: Boolean,
 			required: false,
@@ -25,7 +28,10 @@ export default {
 </script>
 
 <template>
-	<button :class="[filled ? 'filled' : 'hollow', padding ? 'padding' : '']" :style="customStyle">
+	<button
+		:class="[filled ? 'filled' : 'hollow', padding ? 'padding' : '', red ? 'red' : '']"
+		:style="customStyle"
+	>
 		{{ content }}
 	</button>
 </template>
@@ -62,5 +68,13 @@ button {
 	border: 1px solid var(--white);
 	color: var(--white);
 	font-weight: 500;
+}
+
+.red {
+	background: var(--red-bg);
+}
+.red:hover {
+	background: var(--red-bg);
+	color: var(--white);
 }
 </style>

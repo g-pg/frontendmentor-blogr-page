@@ -9,6 +9,27 @@ export default {
 		Header,
 		Footer,
 	},
+	data() {
+		return {
+			windowWidth: window.innerWidth,
+		};
+	},
+	mounted() {
+		window.addEventListener("resize", this.handleWindowResize);
+	},
+	beforeUnmount() {
+		window.removeEventListener("resize", this.handleWindowResize);
+	},
+	methods: {
+		updateWindowWidth() {
+			this.windowWidth = window.innerWidth;
+		},
+	},
+	computed: {
+		isMobile() {
+			return this.windowWidth <= 980;
+		},
+	},
 };
 </script>
 

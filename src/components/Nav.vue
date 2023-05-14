@@ -66,7 +66,7 @@ export default {
 			return this.isMobile ? "icon-arrow-dark" : "icon-arrow-light";
 		},
 		isMobile() {
-			return this.windowWidth > 980 ? false : true;
+			return this.windowWidth <= 980;
 		},
 	},
 };
@@ -79,44 +79,50 @@ export default {
 			<button @click="toggleBurger" class="burger-btn">
 				<img :src="burgerIconPath" alt="" />
 			</button>
-			<ul
-				v-if="!isMobile || burgerOpen"
-				:class="['main-nav-ul', isMobile ? 'mobile' : '']"
-			>
-				<li ref="navItem">
-					<a href="#" class="primary-link" @click="handleMenuClick('product')"
-						>Product</a
-					><SvgComp :name="arrowIcon" :class="addRotationClass('product')" />
-				</li>
-				<li ref="navItem">
-					<a href="#" class="primary-link" @click="handleMenuClick('company')"
-						>Company</a
-					><SvgComp :name="arrowIcon" :class="addRotationClass('company')" />
-				</li>
-				<li ref="navItem">
-					<div class="link-arrow" @click="handleMenuClick('connect')">
-						<a href="#" class="primary-link">Connect</a
-						><SvgComp :name="arrowIcon" :class="addRotationClass('connect')" />
-					</div>
-
-					<div
-						class="dropdown"
-						:class="{
-							show: this.showDropdown && this.selectedMenu === 'connect',
-						}"
-						ref="dropdownRef"
-					>
-						<a href="#" class="dropdown-link">Contact</a
-						><a href="#" class="dropdown-link">Newsletter</a
-						><a href="#" class="dropdown-link">Linkedin</a>
-					</div>
-				</li>
-			</ul>
-			<div v-if="!isMobile || burgerOpen" class="auth-btns">
-				<a href="#" class="primary-link">Login</a>
-				<a href="#">
-					<PrimaryBtn content="Sign Up" hollow padding />
-				</a>
+			<div v-if="!isMobile || burgerOpen" class="nav-wrapper">
+				<ul :class="['main-nav-ul', isMobile ? 'mobile' : '']">
+					<li ref="navItem">
+						<a href="#" class="primary-link" @click="handleMenuClick('product')"
+							>Product</a
+						><SvgComp :name="arrowIcon" :class="addRotationClass('product')" />
+					</li>
+					<li ref="navItem">
+						<a href="#" class="primary-link" @click="handleMenuClick('company')"
+							>Company</a
+						><SvgComp :name="arrowIcon" :class="addRotationClass('company')" />
+					</li>
+					<li ref="navItem">
+						<div class="link-arrow" @click="handleMenuClick('connect')">
+							<a href="#" class="primary-link">Connect</a
+							><SvgComp
+								:name="arrowIcon"
+								:class="addRotationClass('connect')"
+							/>
+						</div>
+						<div
+							class="dropdown"
+							:class="{
+								show: this.showDropdown && this.selectedMenu === 'connect',
+							}"
+							ref="dropdownRef"
+						>
+							<a href="#" class="dropdown-link">Contact</a
+							><a href="#" class="dropdown-link">Newsletter</a
+							><a href="#" class="dropdown-link">Linkedin</a>
+						</div>
+					</li>
+				</ul>
+				<div v-if="!isMobile || burgerOpen" class="auth-btns">
+					<a href="#" class="primary-link">Login</a>
+					<a href="#">
+						<PrimaryBtn
+							content="Sign Up"
+							hollow
+							padding
+							:red="isMobile ? 'true' : 'false'"
+						/>
+					</a>
+				</div>
 			</div>
 		</div>
 	</nav>
@@ -130,6 +136,13 @@ export default {
 	margin-top: 0.5rem;
 }
 
+.nav-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	width: 100%;
+}
 .main-nav-ul {
 	display: flex;
 	gap: 2rem;
@@ -223,17 +236,9 @@ a {
 	.container {
 		position: relative;
 	}
-	.burger-btn {
-		display: unset;
-		margin-left: auto;
-		background: none;
-		border: none;
-		cursor: pointer;
-	}
-	.auth-btns {
-		display: none;
-	}
-	.main-nav-ul {
+
+	.nav-wrapper {
+		width: unset;
 		position: absolute;
 		z-index: 999;
 		width: 90%;
@@ -245,9 +250,29 @@ a {
 		flex-direction: column;
 		align-items: center;
 		gap: 2.5rem;
-		padding: 2.5rem;
+		padding: 3rem 2rem;
 		box-shadow: 0px 5px 15px 3px rgb(0, 0, 0, 0.2);
 		border-radius: 8px;
+	}
+	.burger-btn {
+		display: unset;
+		margin-left: auto;
+		background: none;
+		border: none;
+		cursor: pointer;
+	}
+	.auth-btns {
+		margin: 0 auto;
+		flex-direction: column;
+		border-top: 1px solid var(--grayish-blue);
+		width: 100%;
+		padding-top: 3rem;
+	}
+	.main-nav-ul {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
 	}
 
 	.primary-link {
@@ -271,7 +296,6 @@ a {
 		gap: 1.8rem;
 		/* animation: roll 0.3s ease-in forwards; */
 	}
-
 	.dropdown-link {
 		color: var(--very-dark-blue);
 		font-size: 1.1rem;
