@@ -66,7 +66,11 @@ export default {
 						</div>
 						<div class="img-column">
 							<img
-								src="../../assets/illustration-editor-desktop.svg"
+								:src="
+									isMobile
+										? '/illustration-editor-mobile.svg'
+										: '/illustration-editor-desktop.svg'
+								"
 								alt="Design sketch with scribbled lines, circles and squares"
 								class="editor-img"
 							/>
@@ -105,7 +109,11 @@ export default {
 					<div class="equal-columns">
 						<div class="img-column">
 							<img
-								src="../../assets/illustration-laptop-desktop.svg"
+								:src="
+									isMobile
+										? '/illustration-laptop-mobile.svg'
+										: '/illustration-laptop-desktop.svg'
+								"
 								alt="Laptop with a website layout on the screen"
 								class="laptop-img"
 							/>
@@ -189,14 +197,14 @@ section {
 .editor-section .text-segment h3,
 .laptop-section .text-segment h3 {
 	color: var(--very-dark-blue);
-	font-size: clamp(1.2rem, 5vw, 1.6rem);
+	font-size: clamp(1.7rem, 5vw, 1.8rem);
 	font-weight: 500;
 }
 
 .editor-section .text-segment p,
 .laptop-section .text-segment p {
 	margin-top: 1rem;
-	font-size: clamp(0.8rem, 2vw, 1rem);
+	font-size: clamp(1.1rem, 2vw, 1.2rem);
 	color: var(--dark-blue);
 	line-height: 2rem;
 	font-weight: 400;
@@ -221,7 +229,7 @@ section {
 	background: url("@/assets/bg-pattern-circles.svg"), var(--blue-bg);
 	background-position: -5% 100%;
 	background-repeat: no-repeat;
-	margin-top: 10rem;
+	margin-top: 15rem;
 	border-radius: 0 100px 0 100px;
 }
 
@@ -259,21 +267,93 @@ section {
 
 .phones-section .text-column h2 {
 	font-weight: 500;
-	font-size: clamp(1.2rem, 10vw, 2rem);
+	font-size: clamp(1.6rem, 10vw, 2rem);
 	color: var(--white);
 }
 
 .phones-section .text-column p {
 	margin-top: 1rem;
-	font-size: clamp(0.8rem, 2vw, 1rem);
+	font-size: clamp(1rem, 2vw, 1.2rem);
 	color: var(--grayish-blue);
 	line-height: 2rem;
 	font-weight: 400;
 }
-@media (max-width: 1200px) {
+@media (max-width: 980px) {
+	section {
+		margin-block: 6rem;
+		/* margin-bottom: 6rem; */
+	}
 	.phones-section-wrapper,
-	.editor-section-wrapper {
+	.editor-section-wrapper,
+	.laptop-section-wrapper {
 		width: 100%;
+	}
+
+	.editor-section .equal-columns,
+	.laptop-section .equal-columns {
+		flex-direction: column-reverse;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	.laptop-section .equal-columns {
+		flex-direction: column;
+	}
+	.editor-section .img-column,
+	.laptop-section .img-column {
+		min-height: unset;
+	}
+	.text-column {
+		margin-top: unset;
+	}
+
+	.text-column h3 {
+		text-align: center;
+	}
+	.editor-section .text-segment p,
+	.laptop-section .text-segment p {
+		text-align: center;
+	}
+	.editor-img,
+	.laptop-img {
+		position: unset;
+		margin: 0 auto;
+		min-width: unset;
+		/* width: 100%; */
+	}
+
+	.laptop-section .text-column {
+		margin-top: 3rem;
+	}
+	.phones-section-wrapper {
+		padding-bottom: 8rem;
+	}
+	.phones-section .equal-columns {
+		flex-direction: column;
+		gap: 3;
+	}
+
+	.phones-section .img-column {
+		min-height: unset;
+		margin-top: 10rem;
+		/* padding-block: 3rem; */
+	}
+
+	.phones-img {
+		margin-top: -25%;
+	}
+	.phones-section .text-column {
+		/* margin-top: 15rem; */
+		width: 100%;
+	}
+
+	.phones-section .text-column h2 {
+		text-align: center;
+	}
+
+	.phones-section p {
+		text-align: center;
 	}
 }
 </style>
