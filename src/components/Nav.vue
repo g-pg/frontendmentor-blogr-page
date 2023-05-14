@@ -45,11 +45,6 @@ export default {
 		},
 	},
 
-	// watch: {
-	// 	windowWidth(newWidth) {
-	// 		console.log("newidth", newWidth);
-	// 	},
-	// },
 	mounted() {
 		document.addEventListener("click", this.closeDropdown);
 		window.addEventListener("resize", this.updateWindowWidth);
@@ -119,7 +114,7 @@ export default {
 							content="Sign Up"
 							hollow
 							padding
-							:red="isMobile ? 'true' : 'false'"
+							:red="isMobile ? true : false"
 						/>
 					</a>
 				</div>

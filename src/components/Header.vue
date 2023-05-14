@@ -31,7 +31,7 @@ export default {
 header {
 	background: url("../assets/bg-pattern-intro-desktop.svg"), var(--red-bg);
 	background-position: 10% 50%;
-	height: 70vh;
+	height: 100vh;
 	padding-block: 3rem;
 	display: flex;
 	flex-direction: column;
