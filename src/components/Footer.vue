@@ -26,7 +26,7 @@ LinkedIn -->
 	<footer>
 		<div class="container">
 			<div class="footer-wrapper">
-				<div class="column"><img src="../assets/logo.svg" alt="Blogr logo" /></div>
+				<div class="column"><img src="/logo.svg" alt="Blogr logo" /></div>
 				<div class="column">
 					<h3>Product</h3>
 					<ul>

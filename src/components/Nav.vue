@@ -95,7 +95,7 @@ export default {
 <template>
 	<nav>
 		<div class="container">
-			<a href="#"><img src="../assets/logo.svg" alt="Blogr logo" /></a>
+			<a href="#"><img src="/logo.svg" alt="Blogr logo" /></a>
 			<button @click="toggleBurger" class="burger-btn" ref="burgerBtnRef">
 				<img :src="burgerIconPath" alt="" />
 			</button>

@@ -84,8 +84,8 @@ export default {
 					<div class="equal-columns">
 						<div class="img-column">
 							<img
-								src="../../assets/illustration-phones.svg"
-								alt="Design sketch with scribbled lines, circles and squares"
+								src="/illustration-phones.svg"
+								alt="Two phones with Blogr written on the first one's screen and a website layout on the second."
 								class="phones-img"
 							/>
 						</div>
