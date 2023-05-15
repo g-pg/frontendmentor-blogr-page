@@ -137,7 +137,7 @@ export default {
 					<a href="#">
 						<PrimaryBtn
 							content="Sign Up"
-							hollow
+							filled
 							padding
 							:red="isMobile ? true : false"
 						/>
