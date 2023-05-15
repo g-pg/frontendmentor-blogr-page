@@ -30,3 +30,5 @@ Escolhi este desafio para aprender VueJs.
 <br>
 
 # **🌎 Acesso**
+
+A aplicação está hospedada no Netlify e pode ser acessada neste [link](https://gpg-frontendmentor-blogr-page.netlify.app/).
