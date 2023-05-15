@@ -1,6 +1,4 @@
-# frontendmentor-ecommerce
-
-# **Frontend Mentor - E-Commerce Challenge**
+# **Frontend Mentor - Blogr Page**
 
 ![Desktop Preview](./readme/desktop-preview1.png)
 
