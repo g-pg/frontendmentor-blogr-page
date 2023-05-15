@@ -35,7 +35,6 @@ export default {
 
 <template>
 	<PageLayout>
-		<Header />
 		<section class="editor-section">
 			<div class="container">
 				<div class="section-wrapper editor">
@@ -149,7 +148,6 @@ export default {
 				</div>
 			</div>
 		</section>
-		<Footer />
 	</PageLayout>
 </template>
 
