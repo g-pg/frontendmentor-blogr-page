@@ -1,29 +1,32 @@
-# frontendmentor-blogr-page
+# frontendmentor-ecommerce
 
-This template should help get you started developing with Vue 3 in Vite.
+# **Frontend Mentor - E-Commerce Challenge**
 
-## Recommended IDE Setup
+![Desktop Preview](./readme/desktop-preview1.png)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Challenge do Frontend Mentor para a criação de uma landing page.
 
-## Customize configuration
+<br>
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+<br>
 
-## Project Setup
+<br>
 
-```sh
-npm install
-```
+# **📄 Sobre o desafio**
 
-### Compile and Hot-Reload for Development
+Para completar o desafio, era preciso seguir o design mobile e desktop, incluindo menus dropdown e, para celular, um menu burger. <br>
+O design é relativamente simples, apesar de exigir um bom conhecimento em responsividade para posicionar corretamente as SVGs de cada seção com **position absolute**.
+<br><br>
+Escolhi este desafio para aprender VueJs.
+<br>
+<br>
 
-```sh
-npm run dev
-```
+# **📷 Screenshots**
 
-### Compile and Minify for Production
+<img src="./readme/desktop-preview2.png" width="50%" height="auto"/><img src="./readme/mobile-preview1.png" width="20%"/>
 
-```sh
-npm run build
-```
+<br>
+
+<br>
+
+# **🌎 Acesso**
