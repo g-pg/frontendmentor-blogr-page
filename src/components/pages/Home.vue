@@ -38,7 +38,7 @@ export default {
 		<Header />
 		<section class="editor-section">
 			<div class="container">
-				<div class="editor-section-wrapper">
+				<div class="section-wrapper editor">
 					<h2 class="section-title blue">Designed for the future</h2>
 					<div class="equal-columns">
 						<div class="text-column">
@@ -81,7 +81,7 @@ export default {
 		</section>
 		<section class="phones-section">
 			<div class="container">
-				<div class="phones-section-wrapper">
+				<div class="section-wrapper phones">
 					<div class="equal-columns">
 						<div class="img-column">
 							<img
@@ -91,13 +91,18 @@ export default {
 							/>
 						</div>
 						<div class="text-column">
-							<h2>State of the Art Infrastructure</h2>
-							<p>
-								With reliability and speed in mind, worldwide data centers
-								provide the backbone for ultra-fast connectivity. This
-								ensures your site will load instantly, no matter where your
-								readers are, keeping your site competitive.
-							</p>
+							<div class="text-segment">
+								<h2 class="section-title white">
+									State of the Art Infrastructure
+								</h2>
+								<p>
+									With reliability and speed in mind, worldwide data
+									centers provide the backbone for ultra-fast
+									connectivity. This ensures your site will load
+									instantly, no matter where your readers are, keeping
+									your site competitive.
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -105,7 +110,7 @@ export default {
 		</section>
 		<section class="laptop-section">
 			<div class="container">
-				<div class="laptop-section-wrapper">
+				<div class="section-wrapper laptop">
 					<div class="equal-columns">
 						<div class="img-column">
 							<img
@@ -153,206 +158,153 @@ section {
 	margin-block: 10rem;
 }
 .section-title {
-	color: var(--very-dark-blue);
 	text-align: center;
 	font-size: clamp(1.2rem, 10vw, 2rem);
 	font-weight: 500;
 }
-.editor-section-wrapper,
-.laptop-section-wrapper {
+
+.section-title.blue {
+	color: var(--very-dark-blue);
+}
+.section-title.white {
+	color: var(--white);
+}
+
+.section-wrapper {
 	position: relative;
-	/* padding-block: 5rem; */
 	width: 80%;
 	margin: 0 auto;
 	min-height: 90vh;
 }
-.editor-section .equal-columns,
-.laptop-section .equal-columns {
-	margin-top: 3rem;
+
+.equal-columns {
 	display: flex;
 	align-items: center;
-	height: 100%;
+	justify-content: space-between;
 	gap: 5rem;
-	margin-top: 5rem;
 }
 
-.editor-section .equal-columns > div,
-.laptop-section .equal-columns > div {
-	flex-basis: 100%;
+.equal-columns > div {
+	margin-top: 8rem;
+	flex-basis: 50%;
 }
 
-.editor-section .text-column,
-.laptop-section .text-column {
+.text-column {
 	display: flex;
 	flex-direction: column;
 	gap: 3.5rem;
 	height: 100%;
-	max-width: 500px;
-	margin-top: 3rem;
-}
-
-.laptop-section .text-column {
 	margin-top: 8rem;
 }
-.editor-section .text-segment h3,
-.laptop-section .text-segment h3 {
+
+.text-segment h3 {
 	color: var(--very-dark-blue);
 	font-size: clamp(1.7rem, 5vw, 1.8rem);
 	font-weight: 500;
 }
-
-.editor-section .text-segment p,
-.laptop-section .text-segment p {
+.text-segment p {
 	margin-top: 1rem;
-	font-size: clamp(1.1rem, 2vw, 1.2rem);
+	font-size: clamp(1.1rem, 2vw, 1.1rem);
+	font-size: 1.1rem;
 	color: var(--dark-blue);
 	line-height: 2rem;
 	font-weight: 400;
 }
-.editor-section .img-column,
-.laptop-section .img-column {
-	min-height: 70vh;
-	width: 100%;
+
+.img-column {
+	position: relative;
+	align-self: stretch;
+	flex-shrink: 0;
+	display: grid;
+	place-items: center;
 }
-.editor-img,
-.laptop-img {
+
+.editor-img {
 	position: absolute;
-	top: 0px;
-	right: clamp(-380px, -30vw, -800px);
-	min-width: 700px;
+	transform: scale(1.7);
+	min-width: 300px;
+	right: -50%;
 }
 
 .laptop-img {
-	left: clamp(-380px, -30vw, -800px);
+	position: absolute;
+	transform: scale(1.7);
+	min-width: 300px;
+	left: -50%;
 }
+
 .phones-section {
 	background: url("@/assets/bg-pattern-circles.svg"), var(--blue-bg);
 	background-position: -5% 100%;
 	background-repeat: no-repeat;
-	margin-top: 15rem;
 	border-radius: 0 100px 0 100px;
 }
 
-.phones-section-wrapper {
-	width: 85%;
-	margin: 0 auto;
-	position: relative;
-	min-height: 45vh;
+.section-wrapper.phones {
+	min-height: unset;
+	margin-block: 18rem;
+	padding-block: 6rem;
+}
+.phones-section .section-title {
+	text-align: left;
+}
+.phones-section p {
+	color: var(--white);
+	color: var(--grayish-blue);
 }
 
-.phones-section .equal-columns {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	gap: 3rem;
-}
-
-.phones-section .text-column {
-	width: 50%;
-}
-
-.phones-section .img-column {
-	min-height: 45vh;
-	flex-basis: 50%;
-
-	flex-shrink: 0;
+.phones-section .equal-columns > div {
+	margin-top: 0;
 }
 .phones-img {
 	position: absolute;
-	top: -10%;
-	left: 0;
-	width: clamp(450px, 30vw, 800px);
 }
 
-.phones-section .text-column h2 {
-	font-weight: 500;
-	font-size: clamp(1.6rem, 10vw, 2rem);
-	color: var(--white);
-}
-
-.phones-section .text-column p {
-	margin-top: 1rem;
-	font-size: clamp(1rem, 2vw, 1.2rem);
-	color: var(--grayish-blue);
-	line-height: 2rem;
-	font-weight: 400;
-}
 @media (max-width: 980px) {
 	section {
-		margin-block: 6rem;
-		/* margin-bottom: 6rem; */
+		margin-block: 5rem;
 	}
-	.phones-section-wrapper,
-	.editor-section-wrapper,
-	.laptop-section-wrapper {
+	.section-wrapper {
 		width: 100%;
-	}
-
-	.editor-section .equal-columns,
-	.laptop-section .equal-columns {
-		flex-direction: column-reverse;
-		align-items: center;
-		justify-content: center;
-		gap: 1rem;
-	}
-
-	.laptop-section .equal-columns {
-		flex-direction: column;
-	}
-	.editor-section .img-column,
-	.laptop-section .img-column {
 		min-height: unset;
 	}
-	.text-column {
-		margin-top: unset;
+	.equal-columns {
+		flex-direction: column;
+		gap: 2rem;
+	}
+	.editor .equal-columns {
+		flex-direction: column-reverse;
+	}
+	.equal-columns > div {
+		margin-top: 3rem;
 	}
 
-	.text-column h3 {
-		text-align: center;
-	}
-	.editor-section .text-segment p,
-	.laptop-section .text-segment p {
-		text-align: center;
+	.img-column {
+		align-self: unset;
 	}
 	.editor-img,
 	.laptop-img {
 		position: unset;
-		margin: 0 auto;
-		min-width: unset;
-		/* width: 100%; */
+		transform: unset;
 	}
 
-	.laptop-section .text-column {
-		margin-top: 3rem;
-	}
-	.phones-section-wrapper {
-		padding-bottom: 8rem;
-	}
-	.phones-section .equal-columns {
-		flex-direction: column;
-		gap: 3;
-	}
-
-	.phones-section .img-column {
-		min-height: unset;
-		margin-top: 10rem;
-		/* padding-block: 3rem; */
-	}
-
-	.phones-img {
-		margin-top: -25%;
-	}
-	.phones-section .text-column {
-		/* margin-top: 15rem; */
-		width: 100%;
-	}
-
-	.phones-section .text-column h2 {
+	.text-column {
 		text-align: center;
 	}
 
-	.phones-section p {
+	.section-wrapper.phones {
+		padding-top: 10rem;
+		margin-bottom: 0;
+	}
+	.phones .img-column {
+		align-self: stretch;
+	}
+
+	.phones-img {
+		transform: translateY(-40%);
+		max-width: 400px;
+	}
+	.phones .section-title {
 		text-align: center;
 	}
 }
