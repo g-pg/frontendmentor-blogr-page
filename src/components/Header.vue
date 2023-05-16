@@ -30,23 +30,16 @@ export default {
 <style scoped>
 header {
 	background: url("../assets/bg-pattern-intro-desktop.svg"), var(--red-bg);
-	background-position: 10% 50%;
-	height: 100dvh;
+	background-position: 30% 50%;
+	height: 80dvh;
 	padding-block: 3rem;
 	display: flex;
 	flex-direction: column;
 	border-radius: 0 0 0 90px;
 	position: relative;
 	z-index: 1;
-	/* margin-bottom: 5rem; */
 }
 
-@media (max-width: 700px) {
-	header {
-		background: url("../assets/bg-pattern-intro-mobile.svg"), var(--red-bg);
-		background-position: 30% 40%;
-	}
-}
 .container {
 	display: grid;
 	place-items: center;
@@ -85,5 +78,10 @@ header {
 }
 
 @media (max-width: 980px) {
+	header {
+		background: url("../assets/bg-pattern-intro-mobile.svg"), var(--red-bg);
+		background-position: 30% 40%;
+		height: 100dvh;
+	}
 }
 </style>
