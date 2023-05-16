@@ -72,9 +72,9 @@ button {
 
 .red {
 	background: var(--red-bg);
+	color: var(--white);
 }
 .red:hover {
 	background: var(--red-bg);
-	color: var(--white);
 }
 </style>

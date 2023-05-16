@@ -34,21 +34,22 @@ export default {
 
 			(this.showDropdown = true), (this.selectedMenu = menu);
 		},
-		closeDropdown(event) {
-			if (this.$refs.navItem && !this.$refs.navItem.contains(event.target)) {
+		closeDropdown(e) {
+			const navUlRef = this.$refs.navRef;
+			if (navUlRef && !navUlRef.contains(e.target)) {
 				this.showDropdown = false;
-				this.selectedMenu = "";
+				return (this.selectedMenu = "");
 			}
 		},
-		closeBurger(event) {
+		closeBurger(e) {
 			const navRef = this.$refs.navRef;
 			const burgerBtnRef = this.$refs.burgerBtnRef;
 
 			if (
 				navRef &&
 				burgerBtnRef &&
-				!navRef.contains(event.target) &&
-				!burgerBtnRef.contains(event.target)
+				!navRef.contains(e.target) &&
+				!burgerBtnRef.contains(e.target)
 			) {
 				this.burgerOpen = false;
 			}
@@ -100,18 +101,49 @@ export default {
 				<img :src="burgerIconPath" alt="" />
 			</button>
 			<div v-if="!isMobile || burgerOpen" class="nav-wrapper" ref="navRef">
-				<ul :class="['main-nav-ul', isMobile ? 'mobile' : '']">
-					<li ref="navItem">
-						<a href="#" class="primary-link" @click="handleMenuClick('product')"
-							>Product</a
-						><SvgComp :name="arrowIcon" :class="addRotationClass('product')" />
+				<ul :class="['main-nav-ul', isMobile ? 'mobile' : '']" ref="navUlRef">
+					<li class="navItem">
+						<div class="link-arrow" @click="handleMenuClick('product')">
+							<a href="#" class="primary-link">Product</a
+							><SvgComp
+								:name="arrowIcon"
+								:class="addRotationClass('product')"
+							/>
+						</div>
+						<div
+							class="dropdown"
+							:class="{
+								show: this.showDropdown && this.selectedMenu === 'product',
+							}"
+							ref="dropdownRef"
+						>
+							<a href="#">Overview</a>
+							<a href="#">Pricing</a>
+							<a href="#">Marketplace</a>
+							<a href="#">Features</a>
+							<a href="#">Integrations</a>
+						</div>
 					</li>
-					<li ref="navItem">
-						<a href="#" class="primary-link" @click="handleMenuClick('company')"
-							>Company</a
-						><SvgComp :name="arrowIcon" :class="addRotationClass('company')" />
+					<li class="navItem">
+						<div class="link-arrow" @click="handleMenuClick('Company')">
+							<a href="#" class="primary-link">Company</a
+							><SvgComp
+								:name="arrowIcon"
+								:class="addRotationClass('company')"
+							/>
+						</div>
+						<div
+							class="dropdown"
+							:class="{
+								show: this.showDropdown && this.selectedMenu === 'Company',
+							}"
+							ref="dropdownRef"
+						>
+							<a href="#">About</a><a href="#">Team</a><a href="#">Blog</a
+							><a href="#">Careers</a>
+						</div>
 					</li>
-					<li ref="navItem">
+					<li class="navItem">
 						<div class="link-arrow" @click="handleMenuClick('connect')">
 							<a href="#" class="primary-link">Connect</a
 							><SvgComp
@@ -126,9 +158,8 @@ export default {
 							}"
 							ref="dropdownRef"
 						>
-							<a href="#" class="dropdown-link">Contact</a
-							><a href="#" class="dropdown-link">Newsletter</a
-							><a href="#" class="dropdown-link">Linkedin</a>
+							<a href="#">Contact</a><a href="#">Newsletter</a
+							><a href="#">Linkedin</a>
 						</div>
 					</li>
 				</ul>
@@ -212,6 +243,7 @@ a {
 	/* animation: roll 0.3s ease-in forwards; */
 	transition: 0.3s ease-in;
 	display: none;
+	z-index: 10;
 }
 
 .show {
@@ -233,13 +265,12 @@ a {
 	}
 }
 
-.dropdown-link {
+.dropdown a {
 	color: var(--black);
 	font-size: 0.9rem;
 	font-weight: 500;
 }
-
-.dropdown-link:hover {
+.dropdown a:hover {
 	font-weight: 700;
 }
 .auth-btns {
@@ -305,6 +336,7 @@ a {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		flex-direction: column;
 	}
 	.dropdown {
 		text-align: center;
@@ -314,9 +346,11 @@ a {
 		left: 0;
 		margin: 0 auto;
 		gap: 1.8rem;
+		position: relative;
+		top: 10px;
 		/* animation: roll 0.3s ease-in forwards; */
 	}
-	.dropdown-link {
+	.dropdown a {
 		color: var(--very-dark-blue);
 		font-size: 1.1rem;
 	}
