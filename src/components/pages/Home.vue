@@ -170,7 +170,7 @@ section {
 
 .section-wrapper {
 	position: relative;
-	width: 80%;
+	/* width: 80%; */
 	margin: 0 auto;
 	min-height: 90vh;
 }
@@ -219,16 +219,16 @@ section {
 
 .editor-img {
 	position: absolute;
-	transform: scale(1.7);
+	transform: scale(1.3);
 	min-width: 300px;
-	right: -50%;
+	right: -30%;
 }
 
 .laptop-img {
 	position: absolute;
-	transform: scale(1.7);
+	transform: scale(1.3);
 	min-width: 300px;
-	left: -50%;
+	left: -30%;
 }
 
 .phones-section {
